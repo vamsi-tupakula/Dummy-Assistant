@@ -3,6 +3,7 @@ import pyttsx3
 import pywhatkit
 import datetime
 import webbrowser
+import os
 
 listener = sr.Recognizer()
 
@@ -47,6 +48,8 @@ def run_alexa():
         webbrowser.register('chrome',None,
         webbrowser.BackgroundBrowser("C:\\Users\\HP\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe"))
         webbrowser.get('chrome').open(url)
+    elif 'open Notepad':
+        os.system("c:\\windows\\notepad.exe")
     else:
         speak("Huh?")
 
