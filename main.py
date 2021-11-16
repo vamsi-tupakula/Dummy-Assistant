@@ -2,6 +2,7 @@ import speech_recognition as sr
 import pyttsx3
 import pywhatkit
 import datetime
+import webbrowser
 
 listener = sr.Recognizer()
 
@@ -37,5 +38,16 @@ def run_alexa():
     elif 'time' in command:
         time = datetime.datetime.now().strftime('%I:%M %p')
         speak('current time is ' + time)
+    elif 'search' in command:
+        command = command.replace('search','')
+        command = command.strip() # removes all empty spaces
+        url = "https://www.google.com/search?q=" + command
+
+        #our browser location
+        webbrowser.register('chrome',None,
+        webbrowser.BackgroundBrowser("C:\\Users\\HP\\AppData\\Local\\Google\\Chrome\\Application\\chrome.exe"))
+        webbrowser.get('chrome').open(url)
+    else:
+        speak("Huh?")
 
 run_alexa()
