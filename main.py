@@ -1,5 +1,7 @@
 import speech_recognition as sr
 import pyttsx3
+import pywhatkit
+import datetime
 
 listener = sr.Recognizer()
 
@@ -31,4 +33,9 @@ def run_alexa():
     if 'play' in command:
         command = command.replace('play','')
         speak('playing' + command)
+        pywhatkit.playonyt(command)
+    elif 'time' in command:
+        time = datetime.datetime.now().strftime('%I:%M %p')
+        speak('current time is ' + time)
 
+run_alexa()
