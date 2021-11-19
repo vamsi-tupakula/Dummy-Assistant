@@ -33,6 +33,7 @@ def get_command():
 
 def run_alexa():
     command = get_command()
+    print("you said : "+ command)
     if 'play' in command:
         command = command.replace('play','')
         speak('playing' + command)
